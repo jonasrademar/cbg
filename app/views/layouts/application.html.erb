@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<%= render '/refinery/html_tag' %>
+<%= render '/refinery/head' %>
+<body>
+	<%= render '/refinery/ie6check' if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
+  <header class="pagetop container">
+    <%= render '/refinery/header' -%>
+  </header>
+ 	<div class="container page">
+      <%= yield %>
+			<footer class='sixteen columns'>        
+				<%= render '/refinery/footer' -%>
+			</footer>
+		</div>
+
+		<div class='copyright container'>
+			<aside class="eight columns offset-by-eight">
+		<p>
+		  <%= t('copyright', :year => Time.now.year, :site_name => Refinery::Core.site_name) %>
+			
+		</p>
+		</aside>
+	</div>
+    <%= render '/refinery/javascripts' %>
+    <%= yield :scripts %>
+  </body>
+</html>
